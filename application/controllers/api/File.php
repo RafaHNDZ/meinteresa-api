@@ -55,8 +55,9 @@ class File  extends  REST_Controller {
                         'path' => $this->upload->data('file_path'),
                         'uploadedBy' => $this->post('uploader')
                     );
-                    if($this->File->save($file)){
-                        array_push($completes, $file);
+                    $file_id = $this->File->save($file);
+                    if($file_id){
+                        array_push($completes, $file_id);
                     }else{
                         array_push($errors, $file);
                     }

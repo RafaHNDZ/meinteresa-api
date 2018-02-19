@@ -150,6 +150,8 @@ class User extends REST_Controller {
                     'error' => false,
                     'user' => $user
                 );
+                $secret = md5(uniqid($user->user_id, true));
+                //array_push($response, $secret);
             }
         }
         $this->response($response);
@@ -175,16 +177,6 @@ class User extends REST_Controller {
                     'message' => 'Token invalido'
                 );
             }else{
-                /**
-                if(!$this->encryption->match($token, $hash)){
-                    $response = array(
-                        'error' => true,
-                        'message' => 'Token comprometido'
-                    );
-                }else{
-
-                }
-                 **/
                 if(!$user_id){
                     $response = array(
                         'error' => true,

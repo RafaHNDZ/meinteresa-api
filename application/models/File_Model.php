@@ -13,7 +13,7 @@ class File_Model extends CI_Model{
 
     public function save($file){
         if($this->db->insert('archivos', $file)){
-            return true;
+            return $this->db->insert_id();
         }else{
             return false;
         }
